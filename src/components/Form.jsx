@@ -1,16 +1,16 @@
 import dollar from '../assets/images/icon-dollar.svg';
 import person from '../assets/images/icon-person.svg';
 
-const Form = () => {
+const Form = ({ handleBillAmtInput, handleSelectedTip, billAmt, showBillAmtError, handlePeepsAmtInput, peeps, showPeepsError }) => {
     return (
         <div className="form">
             <div className="label-group">
                 <div className="label-wrapper">
                     <label className='label' htmlFor="bill">Bill</label>
-                    <p className='error'></p>
+                    <p className='error'>{showBillAmtError ? "Please enter numbers only": ""}</p>
                 </div>
                 <div className="number-wrapper">
-                    <input type="text" className="number-input" name="" id="bill" />
+                    <input type="text" className="number-input" name="" id="bill" onInput={handleBillAmtInput} value={billAmt} />
                     <img src={dollar} aria-hidden="true" className="icon" />
                 </div>
             </div>
@@ -19,23 +19,23 @@ const Form = () => {
                 <p className="label">Selected Tip %</p>
                 <div className="tip-amount-wrapper">
                     <div className="tip-amount">
-                        <input type="radio" name='tip' value=".05" />
+                        <input type="radio" onChange={handleSelectedTip} name='tip' value=".05" />
                         <div className="tip-btn">5%</div>
                     </div>
                     <div className="tip-amount">
-                        <input type="radio" name='tip' value=".1" />
+                        <input type="radio" onChange={handleSelectedTip} name='tip' value=".1" />
                         <div className="tip-btn">10%</div>
                     </div>
                     <div className="tip-amount">
-                        <input type="radio" name='tip' value=".15" />
+                        <input type="radio" onChange={handleSelectedTip} name='tip' value=".15" />
                         <div className="tip-btn">15%</div>
                     </div>
                     <div className="tip-amount">
-                        <input type="radio" name='tip' value=".25" />
+                        <input type="radio" onChange={handleSelectedTip} name='tip' value=".25" />
                         <div className="tip-btn">25%</div>
                     </div>
                     <div className="tip-amount">
-                        <input type="radio" name='tip' value=".5" />
+                        <input type="radio" onChange={handleSelectedTip} name='tip' value=".5" />
                         <div className="tip-btn">50%</div>
                     </div>
                     <input type="text" className='tip-custom number-input' />
@@ -45,10 +45,10 @@ const Form = () => {
             <div className="label-group">
                 <div className="label-wrapper">
                     <label className='label' htmlFor="people">Number of People</label>
-                    <p className='error'></p>
+                    <p className='error'>{showPeepsError ? "Please enter numbers only": ""}</p>
                 </div>
                 <div className="number-wrapper">
-                    <input type="text" className="number-input" name="" id="people" />
+                    <input type="text" className="number-input" name="" id="people" onInput={handlePeepsAmtInput} value={peeps} />
                     <img src={person} aria-hidden="true" className="icon" />
                 </div>
             </div>
